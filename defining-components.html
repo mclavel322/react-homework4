@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Practice</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      .five-day{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 10px;
+      }
+      .day{
+        display: grid;
+        place-items: center;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      INSTRUCTIONS:
+
+      What's great about props is that they can be used to render
+      multiple instances of the same component, but with different data.
+
+      We have made a FiveDayForecast functional component below,
+      and we use ReactDOM to render it inside the root div.
+
+      The FiveDayForecast component renders 5 DailyWeather components,
+      each one with slightly different props.
+
+      1) Make the DailyWeather component.
+      2) DailyWeather should return a div with a className of "day".
+      3) Inside the div, there should be an h3 tag that houses props.date
+      4) There should also be h5 tags for props.max_temp and props.min_temp
+
+      Make sure you can see the FiveDayForecast on the screen.
+     -->
+    <script type="text/babel">
+      const DailyWeather = (props) => {
+        return (
+          <div className="day">
+            <h3>{props.date}</h3>
+            <h5>{props.max_temp}</h5>
+            <h5>{props.min_temp}</h5>
+          </div>
+        )
+      }
+
+      const FiveDayForecast = () => {
+        return(
+          <div className="five-day">
+            <DailyWeather date="March 1" max_temp="90" min_temp="80"/>
+            <DailyWeather date="March 2" max_temp="92" min_temp="84"/>
+            <DailyWeather date="March 3" max_temp="91" min_temp="81"/>
+            <DailyWeather date="March 4" max_temp="87" min_temp="80"/>
+            <DailyWeather date="March 5" max_temp="84" min_temp="76"/>
+          </div>
+        )
+      }
+
+      ReactDOM.render(
+        <FiveDayForecast/>,
+        document.getElementById('root')
+      )
+    </script>
+  </body>
+</html>
